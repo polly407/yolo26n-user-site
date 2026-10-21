@@ -48,7 +48,7 @@ else:
 if image_file is not None:
     try:
         image = Image.open(image_file).convert("RGB")
-        st.image(image, caption="原始圖片", width="stretch")
+        st.image(image, caption="原始圖片", use_container_width=True)
 
         if st.button("開始辨識", type="primary"):
             with st.spinner("模型辨識中，請稍候..."):
@@ -68,7 +68,7 @@ if image_file is not None:
                 st.image(
                     result.plot()[:, :, ::-1],
                     caption="物件偵測框",
-                    width="stretch",
+                    use_container_width=True,
                 )
 
             with col2:
@@ -88,7 +88,7 @@ if image_file is not None:
                     st.dataframe(
                         detections,
                         hide_index=True,
-                        width="stretch",
+                        use_container_width=True,
                     )
                     st.metric("偵測物件總數", len(detections))
                 else:
